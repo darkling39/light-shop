@@ -1,1 +1,40 @@
-<p>home works!</p>
+<div class="max-w-xl  mx-auto min-h-fit mt-10 md:max-w-5xl lg:max-w-7xl">
+    <div class="mb-10">
+        <h1 class="-mb-3">Filter for keywords</h1>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+            class="size-4 relative top-6 left-2 text-gray-500 z-0 cursor-pointer">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+        </svg>
+        <input name="text-input" type="text" placeholder="Search"
+            class="shadow-md rounded-md py-1 px-2 pl-8 min-w-96 cursor-pointer">
+    </div>
+    <div>
+        <h1 class="">Reuslts: {{numberOfResults}}</h1>
+        <hr>
+        <div class="flex flex-wrap justify-center md:justify-between gap-y-10 mt-10">
+            <mat-card appearance="raised" *ngFor="let item of news$ | async" class="">
+                <button [routerLink]="['../details/', item.id]" class="max-w-96 flex flex-col min-w-96 shadow-md">
+                    <img [src]="item.imageUrl" [alt]="item.link" mat-card-image class="w-full">
+                    <div class="flex flex-row my-3 ml-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-5 h-5 text-gray-400 mr-1">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                        </svg>
+                        <mat-card-subtitle>{{item.date}}</mat-card-subtitle>
+                    </div>
+                    <mat-card-content class="text-left text-xl">{{item.title}}</mat-card-content>
+                    <mat-card-content class="text-left my-5">{{item.snippet}}</mat-card-content>
+                    <h1 class="mx-4 font-normal my-4">Read more
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-5 h-5 inline-block">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                        </svg>
+                    </h1>
+                </button>
+            </mat-card>
+        </div>
+    </div>
+</div>
